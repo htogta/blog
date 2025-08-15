@@ -1,0 +1,42 @@
+(* 
+this grammar leaves out #tags and ;; comments ;; which are stripped out from 
+anywhere in the file, except within the bodies of code blocks and inline code.
+*)
+
+content = { block , "\n" } , EOF ;
+
+block = heading
+      | list
+      | linkdef
+      | image
+      | quote
+      | code
+      | paragraph ;
+
+heading = ( h1 | h2 | h3 ) , "\n" ;
+h1 = "= " , TEXT ;
+h2 = "== " , TEXT ;
+h3 = "=== " , TEXT ;
+
+linkdef = "[" , TEXT , "]: " , PATH , "\n"
+
+image = "=> " , PATH , [ TEXT ] , "\n\n" ;
+
+list = listitem , { listitem } ;
+listitem = "- " , paragraph ;
+
+quote = quoteline , { quoteline } ;
+quoteline = "> " , paragraph ;
+
+code = "```" , "\n" , TEXT , "\n" , "```\n\n" ;
+
+paragraph = { span } , "\n" ;
+
+span = link
+     | pre
+     | emphasis
+     | TEXT ;
+
+link = "[" , TEXT , "]" ;
+pre = "`" , TEXT , "`" ;
+emphasis = "*" , TEXT , "*" ;

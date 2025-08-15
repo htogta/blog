@@ -1,0 +1,176 @@
+:root {
+  --fg: #ebdbb2; /* default fg */
+  --bg: #282828; /* default bg */
+  --quote: #fb4934; /* red */
+  --emphasis: #fabd2f; /* yellow */
+  --lists: #8ec07c; /* blue */
+  --links: #d3869b; /* purple */
+  --heading: #d79921; /* brown */
+  --green: #b8bb26; /* green, markup code */
+  --cyan: #8ec07c; /* aqua/cyan, markup quotes */
+  --orange: #fe8019;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-size: 1em;
+}
+
+::selection {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+::-moz-selection {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+/* .navbarbar stuff */
+
+.navbar {
+  padding: 0rem 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar a {
+  color: var(--orange);
+  text-decoration: none;
+  padding: 0 0.5rem;
+  position: relative;
+  font-size: 1rem; /* base font size */
+}
+
+.navbar a:hover {
+  color: var(--bg);
+  background-color: var(--orange);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .navbar a {
+    font-size: 0.875rem;      /* slightly smaller text on mobile */
+    padding: 0 0.2rem;
+  }
+
+  .navbar {
+    gap: 0.25rem;             /* reduce spacing between links */
+  }
+}
+
+
+/* body's actual content */
+
+.content {
+  max-width: 80ch;
+  margin: 0 auto;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* heading stuff */
+
+h1 {
+  color: var(--green);
+}
+
+h2 {
+  color: var(--cyan);
+}
+
+h3 {
+  color: var(--heading);
+}
+
+h1::before {
+  content: "= ";
+}
+
+h2::before {
+  content: "== ";
+}
+
+h3::before {
+  content: "=== ";
+}
+
+/* links */
+
+.content a {
+  color: var(--links);
+  text-decoration: none;
+}
+
+.content a::before {
+  content: "[";
+}
+
+.content a::after {
+  content: "]";
+}
+
+.content a:hover {
+  background-color: var(--links);
+  color: var(--bg);
+}
+
+/* em tags */
+
+em {
+  font-style: normal;
+  color: var(--emphasis);
+}
+
+em::before {
+  content: "*";
+}
+
+em::after {
+  content: "*";
+}
+
+/* making list look like letdown */
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li::before {
+  content: "- ";
+  color: var(--lists);
+}
+
+/* block quotes */
+
+blockquote {
+  color: var(--quote);
+  margin: 0;
+  padding: 0;
+}
+
+blockquote::before {
+  content: "> ";
+}
+
+/* code (block and inline) */
+
+pre {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* images */
+
+img {
+  color: var(--lists); /* for alt text */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
