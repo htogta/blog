@@ -1,6 +1,7 @@
 # blog
 
-My personal blog, powered by [codex]() and [letdown]()
+My personal blog, powered by [codex](https://github.com/htogta/codex) and 
+[letdown](https://github.com/htogta/letdown)
 
 ## Usage
 
